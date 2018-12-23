@@ -62,6 +62,18 @@ variable "build_timeout" {
   description = "How long in minutes to wait until timing out any related build that does not get marked as completed."
 }
 
+variable "enabled_ecr_access" {
+  default     = false
+  type        = "string"
+  description = "If set to true, enables access to ECR."
+}
+
+variable "ecr_access_policy_arn" {
+  default     = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser"
+  type        = "string"
+  description = "The ARN specifying the IAM Role for ECR access."
+}
+
 variable "iam_path" {
   default     = "/"
   type        = "string"
