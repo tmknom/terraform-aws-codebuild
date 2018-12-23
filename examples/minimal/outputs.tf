@@ -6,10 +6,6 @@ output "codebuild_project_arn" {
   value = "${module.codebuild.codebuild_project_arn}"
 }
 
-output "codebuild_project_badge_url" {
-  value = "${module.codebuild.codebuild_project_badge_url}"
-}
-
 output "iam_role_arn" {
   value = "${module.codebuild.iam_role_arn}"
 }
