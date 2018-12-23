@@ -62,12 +62,6 @@ variable "build_timeout" {
   description = "How long in minutes to wait until timing out any related build that does not get marked as completed."
 }
 
-variable "badge_enabled" {
-  default     = false
-  type        = "string"
-  description = "Generates a publicly-accessible URL for the projects build badge."
-}
-
 variable "iam_path" {
   default     = "/"
   type        = "string"

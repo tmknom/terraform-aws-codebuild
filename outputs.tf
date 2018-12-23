@@ -8,11 +8,6 @@ output "codebuild_project_arn" {
   description = "The ARN of the CodeBuild project."
 }
 
-output "codebuild_project_badge_url" {
-  value       = "${aws_codebuild_project.default.badge_url}"
-  description = "The URL of the build badge when badge_enabled is enabled."
-}
-
 output "iam_role_arn" {
   value       = "${aws_iam_role.default.arn}"
   description = "The Amazon Resource Name (ARN) specifying the IAM Role."
