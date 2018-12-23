@@ -47,6 +47,9 @@ module "codebuild" {
   iam_path         = "/service-role/"
   description      = "This is example"
 
+  enabled_ecr_access    = true
+  ecr_access_policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser"
+
   tags = {
     Environment = "prod"
   }
@@ -60,22 +63,24 @@ module "codebuild" {
 
 ## Inputs
 
-| Name                | Description                                                                                           |  Type  |              Default              | Required |
-| ------------------- | ----------------------------------------------------------------------------------------------------- | :----: | :-------------------------------: | :------: |
-| artifact_bucket_arn | The S3 Bucket ARN of artifacts.                                                                       | string |                 -                 |   yes    |
-| name                | The projects name.                                                                                    | string |                 -                 |   yes    |
-| build_timeout       | How long in minutes to wait until timing out any related build that does not get marked as completed. | string |               `60`                |    no    |
-| buildspec           | The build spec declaration to use for this build project's related builds.                            | string |              `` | no              |
-| cache_location      | The location where the AWS CodeBuild project stores cached resources.                                 | string |              `` | no              |
-| cache_type          | The type of storage that will be used for the AWS CodeBuild project cache.                            | string |            `NO_CACHE`             |    no    |
-| compute_type        | Information about the compute resources the build project will use.                                   | string |      `BUILD_GENERAL1_SMALL`       |    no    |
-| description         | The description of the all resources.                                                                 | string |      `Managed by Terraform`       |    no    |
-| encryption_key      | The KMS CMK to be used for encrypting the build project's build output artifacts.                     | string |              `` | no              |
-| environment_type    | The type of build environment to use for related builds.                                              | string |         `LINUX_CONTAINER`         |    no    |
-| iam_path            | Path in which to create the IAM Role and the IAM Policy.                                              | string |                `/`                |    no    |
-| image               | The image identifier of the Docker image to use for this build project.                               | string | `aws/codebuild/ubuntu-base:14.04` |    no    |
-| privileged_mode     | If set to true, enables running the Docker daemon inside a Docker container.                          | string |              `false`              |    no    |
-| tags                | A mapping of tags to assign to all resources.                                                         |  map   |               `{}`                |    no    |
+| Name                  | Description                                                                                           |  Type  |                            Default                            | Required |
+| --------------------- | ----------------------------------------------------------------------------------------------------- | :----: | :-----------------------------------------------------------: | :------: |
+| artifact_bucket_arn   | The S3 Bucket ARN of artifacts.                                                                       | string |                               -                               |   yes    |
+| name                  | The projects name.                                                                                    | string |                               -                               |   yes    |
+| build_timeout         | How long in minutes to wait until timing out any related build that does not get marked as completed. | string |                             `60`                              |    no    |
+| buildspec             | The build spec declaration to use for this build project's related builds.                            | string |                            `` | no                            |
+| cache_location        | The location where the AWS CodeBuild project stores cached resources.                                 | string |                            `` | no                            |
+| cache_type            | The type of storage that will be used for the AWS CodeBuild project cache.                            | string |                          `NO_CACHE`                           |    no    |
+| compute_type          | Information about the compute resources the build project will use.                                   | string |                    `BUILD_GENERAL1_SMALL`                     |    no    |
+| description           | The description of the all resources.                                                                 | string |                    `Managed by Terraform`                     |    no    |
+| ecr_access_policy_arn | The ARN specifying the IAM Role for ECR access.                                                       | string | `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser` |    no    |
+| enabled_ecr_access    | If set to true, enables access to ECR.                                                                | string |                            `false`                            |    no    |
+| encryption_key        | The KMS CMK to be used for encrypting the build project's build output artifacts.                     | string |                            `` | no                            |
+| environment_type      | The type of build environment to use for related builds.                                              | string |                       `LINUX_CONTAINER`                       |    no    |
+| iam_path              | Path in which to create the IAM Role and the IAM Policy.                                              | string |                              `/`                              |    no    |
+| image                 | The image identifier of the Docker image to use for this build project.                               | string |               `aws/codebuild/ubuntu-base:14.04`               |    no    |
+| privileged_mode       | If set to true, enables running the Docker daemon inside a Docker container.                          | string |                            `false`                            |    no    |
+| tags                  | A mapping of tags to assign to all resources.                                                         |  map   |                             `{}`                              |    no    |
 
 ## Outputs
 
