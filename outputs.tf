@@ -1,3 +1,18 @@
+output "codebuild_project_id" {
+  value       = "${aws_codebuild_project.default.id}"
+  description = "The name (if imported via name) or ARN (if created via Terraform or imported via ARN) of the CodeBuild project."
+}
+
+output "codebuild_project_arn" {
+  value       = "${aws_codebuild_project.default.arn}"
+  description = "The ARN of the CodeBuild project."
+}
+
+output "codebuild_project_badge_url" {
+  value       = "${aws_codebuild_project.default.badge_url}"
+  description = "The URL of the build badge when badge_enabled is enabled."
+}
+
 output "iam_role_arn" {
   value       = "${aws_iam_role.default.arn}"
   description = "The Amazon Resource Name (ARN) specifying the IAM Role."
