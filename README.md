@@ -8,11 +8,40 @@ Terraform module template following [Standard Module Structure](https://www.terr
 
 ## Usage
 
-Named `terraform-<PROVIDER>-<NAME>`. Module repositories must use this three-part name format.
+### Minimal
 
-```sh
-curl -fsSL https://raw.githubusercontent.com/tmknom/terraform-aws-codebuild/master/install | sh -s terraform-aws-sample
-cd terraform-aws-sample && make install
+```hcl
+module "codebuild" {
+  source              = "git::https://github.com/tmknom/terraform-aws-codebuild.git?ref=tags/1.0.0"
+  name                = "example"
+  artifact_bucket_arn = "${var.artifact_bucket_arn}"
+}
+```
+
+### Complete
+
+```hcl
+module "codebuild" {
+  source              = "git::https://github.com/tmknom/terraform-aws-codebuild.git?ref=tags/1.0.0"
+  name                = "example"
+  artifact_bucket_arn = "${var.artifact_bucket_arn}"
+
+  environment_type = "LINUX_CONTAINER"
+  compute_type     = "BUILD_GENERAL1_MEDIUM"
+  image            = "aws/codebuild/docker:18.09.0"
+  privileged_mode  = true
+  buildspec        = "configuration/buildspec.yml"
+  cache_type       = "S3"
+  cache_location   = "cache-s3-bucket/codebuild"
+  encryption_key   = ""
+  build_timeout    = 10
+  iam_path         = "/service-role/"
+  description      = "This is example"
+
+  tags = {
+    Environment = "prod"
+  }
+}
 ```
 
 ## Examples
