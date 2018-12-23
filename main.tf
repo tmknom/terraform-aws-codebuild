@@ -81,9 +81,6 @@ resource "aws_codebuild_project" "default" {
   # any related build that does not get marked as completed.
   build_timeout = "${var.build_timeout}"
 
-  # Set this to true to generate a publicly accessible URL for your project's build badge.
-  badge_enabled = "${var.badge_enabled}"
-
   # A mapping of tags to assign to the resource.
   tags = "${merge(map("Name", var.name), var.tags)}"
 }
