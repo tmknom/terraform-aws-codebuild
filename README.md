@@ -6,6 +6,15 @@
 
 Terraform module which creates CodeBuild resources on AWS.
 
+## Description
+
+Provision [CodeBuild_Projects](https://docs.aws.amazon.com/codebuild/latest/userguide/create-project.html) and
+[CodeBuild Service Role](https://docs.aws.amazon.com/codebuild/latest/userguide/setting-up.html#setting-up-service-role).
+
+This module provides recommended settings:
+
+- Support CodePipeline
+
 ## Usage
 
 ### Minimal
