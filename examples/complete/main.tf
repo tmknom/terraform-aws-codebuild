@@ -15,6 +15,9 @@ module "codebuild" {
   iam_path         = "/service-role/"
   description      = "This is example"
 
+  enabled_ecr_access    = true
+  ecr_access_policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser"
+
   tags = {
     Environment = "prod"
   }

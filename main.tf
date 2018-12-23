@@ -155,6 +155,16 @@ resource "aws_iam_role_policy_attachment" "default" {
   policy_arn = "${aws_iam_policy.default.arn}"
 }
 
+# ECR provides several managed policies that you can attach to IAM users or EC2 instances
+# that allow differing levels of control over Amazon ECR resources and API operations.
+# https://docs.aws.amazon.com/AmazonECR/latest/userguide/ecr_managed_policies.html
+resource "aws_iam_role_policy_attachment" "ecr" {
+  count = "${var.enabled_ecr_access}"
+
+  role       = "${aws_iam_role.default.name}"
+  policy_arn = "${var.ecr_access_policy_arn}"
+}
+
 locals {
   iam_name      = "${var.name}-codebuild"
   log_group_arn = "arn:aws:logs:${local.region}:${local.account_id}:log-group:/aws/codebuild/${var.name}"
