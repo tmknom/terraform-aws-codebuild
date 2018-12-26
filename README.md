@@ -78,7 +78,7 @@ module "codebuild" {
 | environment_type      | The type of build environment to use for related builds.                                              | string |                       `LINUX_CONTAINER`                       |    no    |
 | iam_path              | Path in which to create the IAM Role and the IAM Policy.                                              | string |                              `/`                              |    no    |
 | image                 | The image identifier of the Docker image to use for this build project.                               | string |               `aws/codebuild/ubuntu-base:14.04`               |    no    |
-| privileged_mode       | If set to true, enables running the Docker daemon inside a Docker container.                          | string |                            `false`                            |    no    |
+| privileged_mode       | If set to true, enables running the Docker daemon inside a Docker container.                          | string |                            `true`                             |    no    |
 | tags                  | A mapping of tags to assign to all resources.                                                         |  map   |                             `{}`                              |    no    |
 
 ## Outputs
