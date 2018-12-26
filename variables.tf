@@ -4,6 +4,7 @@ variable "name" {
 }
 
 variable "artifact_bucket_arn" {
+  default     = "arn:aws:s3:::*"
   type        = "string"
   description = "The S3 Bucket ARN of artifacts."
 }
