@@ -1,6 +1,6 @@
 module "codebuild" {
-  source              = "../../"
-  name                = "example"
+  source = "../../"
+  name   = "example"
 }
 
 resource "aws_s3_bucket" "artifact" {
