@@ -28,7 +28,7 @@ variable "image" {
 }
 
 variable "privileged_mode" {
-  default     = false
+  default     = true
   type        = "string"
   description = "If set to true, enables running the Docker daemon inside a Docker container."
 }
