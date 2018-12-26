@@ -73,7 +73,7 @@ module "codebuild" {
 | compute_type          | Information about the compute resources the build project will use.                                   | string |                    `BUILD_GENERAL1_SMALL`                     |    no    |
 | description           | The description of the all resources.                                                                 | string |                    `Managed by Terraform`                     |    no    |
 | ecr_access_policy_arn | The ARN specifying the IAM Role for ECR access.                                                       | string | `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser` |    no    |
-| enabled_ecr_access    | If set to true, enables access to ECR.                                                                | string |                            `false`                            |    no    |
+| enabled_ecr_access    | If set to true, enables access to ECR.                                                                | string |                            `true`                             |    no    |
 | encryption_key        | The KMS CMK to be used for encrypting the build project's build output artifacts.                     | string |                            `` | no                            |
 | environment_type      | The type of build environment to use for related builds.                                              | string |                       `LINUX_CONTAINER`                       |    no    |
 | iam_path              | Path in which to create the IAM Role and the IAM Policy.                                              | string |                              `/`                              |    no    |
