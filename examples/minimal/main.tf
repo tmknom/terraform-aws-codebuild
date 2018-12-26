@@ -1,7 +1,6 @@
 module "codebuild" {
-  source              = "../../"
-  name                = "example"
-  artifact_bucket_arn = "${aws_s3_bucket.artifact.arn}"
+  source = "../../"
+  name   = "example"
 }
 
 resource "aws_s3_bucket" "artifact" {

@@ -1,19 +1,19 @@
 module "codebuild" {
-  source              = "../../"
-  name                = "example"
-  artifact_bucket_arn = "${aws_s3_bucket.artifact.arn}"
+  source = "../../"
+  name   = "example"
 
-  environment_type = "LINUX_CONTAINER"
-  compute_type     = "BUILD_GENERAL1_MEDIUM"
-  image            = "aws/codebuild/docker:18.09.0"
-  privileged_mode  = true
-  buildspec        = "configuration/buildspec.yml"
-  cache_type       = "S3"
-  cache_location   = "${aws_s3_bucket.artifact.id}/codebuild"
-  encryption_key   = ""
-  build_timeout    = 10
-  iam_path         = "/service-role/"
-  description      = "This is example"
+  artifact_bucket_arn = "${aws_s3_bucket.artifact.arn}"
+  environment_type    = "LINUX_CONTAINER"
+  compute_type        = "BUILD_GENERAL1_MEDIUM"
+  image               = "aws/codebuild/docker:18.09.0"
+  privileged_mode     = true
+  buildspec           = "configuration/buildspec.yml"
+  cache_type          = "S3"
+  cache_location      = "${aws_s3_bucket.artifact.id}/codebuild"
+  encryption_key      = ""
+  build_timeout       = 10
+  iam_path            = "/service-role/"
+  description         = "This is example"
 
   enabled_ecr_access    = true
   ecr_access_policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser"

@@ -21,9 +21,8 @@ This module provides recommended settings:
 
 ```hcl
 module "codebuild" {
-  source              = "git::https://github.com/tmknom/terraform-aws-codebuild.git?ref=tags/1.1.0"
-  name                = "example"
-  artifact_bucket_arn = "${var.artifact_bucket_arn}"
+  source = "git::https://github.com/tmknom/terraform-aws-codebuild.git?ref=tags/1.1.0"
+  name   = "example"
 }
 ```
 
@@ -31,21 +30,21 @@ module "codebuild" {
 
 ```hcl
 module "codebuild" {
-  source              = "git::https://github.com/tmknom/terraform-aws-codebuild.git?ref=tags/1.1.0"
-  name                = "example"
-  artifact_bucket_arn = "${var.artifact_bucket_arn}"
+  source = "git::https://github.com/tmknom/terraform-aws-codebuild.git?ref=tags/1.1.0"
+  name   = "example"
 
-  environment_type = "LINUX_CONTAINER"
-  compute_type     = "BUILD_GENERAL1_MEDIUM"
-  image            = "aws/codebuild/docker:18.09.0"
-  privileged_mode  = true
-  buildspec        = "configuration/buildspec.yml"
-  cache_type       = "S3"
-  cache_location   = "cache-s3-bucket/codebuild"
-  encryption_key   = ""
-  build_timeout    = 10
-  iam_path         = "/service-role/"
-  description      = "This is example"
+  artifact_bucket_arn = "${var.artifact_bucket_arn}"
+  environment_type    = "LINUX_CONTAINER"
+  compute_type        = "BUILD_GENERAL1_MEDIUM"
+  image               = "aws/codebuild/docker:18.09.0"
+  privileged_mode     = true
+  buildspec           = "configuration/buildspec.yml"
+  cache_type          = "S3"
+  cache_location      = "${aws_s3_bucket.artifact.id}/codebuild"
+  encryption_key      = ""
+  build_timeout       = 10
+  iam_path            = "/service-role/"
+  description         = "This is example"
 
   enabled_ecr_access    = true
   ecr_access_policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser"
@@ -65,8 +64,8 @@ module "codebuild" {
 
 | Name                  | Description                                                                                           |  Type  |                            Default                            | Required |
 | --------------------- | ----------------------------------------------------------------------------------------------------- | :----: | :-----------------------------------------------------------: | :------: |
-| artifact_bucket_arn   | The S3 Bucket ARN of artifacts.                                                                       | string |                               -                               |   yes    |
 | name                  | The projects name.                                                                                    | string |                               -                               |   yes    |
+| artifact_bucket_arn   | The S3 Bucket ARN of artifacts.                                                                       | string |                       `arn:aws:s3:::*`                        |    no    |
 | build_timeout         | How long in minutes to wait until timing out any related build that does not get marked as completed. | string |                             `60`                              |    no    |
 | buildspec             | The build spec declaration to use for this build project's related builds.                            | string |                            `` | no                            |
 | cache_location        | The location where the AWS CodeBuild project stores cached resources.                                 | string |                            `` | no                            |
