@@ -29,7 +29,7 @@ variable "image" {
 
 variable "privileged_mode" {
   default     = true
-  type        = string
+  type        = bool
   description = "If set to true, enables running the Docker daemon inside a Docker container."
 }
 
@@ -65,7 +65,7 @@ variable "build_timeout" {
 
 variable "enabled_ecr_access" {
   default     = true
-  type        = string
+  type        = bool
   description = "If set to true, enables access to ECR."
 }
 
