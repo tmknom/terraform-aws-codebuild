@@ -21,7 +21,7 @@ This module provides recommended settings:
 
 ```hcl
 module "codebuild" {
-  source = "git::https://github.com/tmknom/terraform-aws-codebuild.git?ref=tags/1.2.0"
+  source = "git::https://github.com/tmknom/terraform-aws-codebuild.git?ref=tags/2.0.0"
   name   = "example"
 }
 ```
@@ -30,10 +30,10 @@ module "codebuild" {
 
 ```hcl
 module "codebuild" {
-  source = "git::https://github.com/tmknom/terraform-aws-codebuild.git?ref=tags/1.2.0"
+  source = "git::https://github.com/tmknom/terraform-aws-codebuild.git?ref=tags/2.0.0"
   name   = "example"
 
-  artifact_bucket_arn = "${var.artifact_bucket_arn}"
+  artifact_bucket_arn = var.artifact_bucket_arn
   environment_type    = "LINUX_CONTAINER"
   compute_type        = "BUILD_GENERAL1_MEDIUM"
   image               = "aws/codebuild/docker:18.09.0"
