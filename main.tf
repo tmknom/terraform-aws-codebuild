@@ -159,7 +159,7 @@ resource "aws_iam_role_policy_attachment" "default" {
 # that allow differing levels of control over Amazon ECR resources and API operations.
 # https://docs.aws.amazon.com/AmazonECR/latest/userguide/ecr_managed_policies.html
 resource "aws_iam_role_policy_attachment" "ecr" {
-  count = var.enabled_ecr_access
+  count = var.enabled_ecr_access ? 1 : 0
 
   role       = aws_iam_role.default.name
   policy_arn = var.ecr_access_policy_arn
