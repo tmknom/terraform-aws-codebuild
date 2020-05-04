@@ -2,7 +2,7 @@ module "codebuild" {
   source = "../../"
   name   = "example"
 
-  artifact_bucket_arn = "${aws_s3_bucket.artifact.arn}"
+  artifact_bucket_arn = aws_s3_bucket.artifact.arn
   environment_type    = "LINUX_CONTAINER"
   compute_type        = "BUILD_GENERAL1_MEDIUM"
   image               = "aws/codebuild/docker:18.09.0"
